@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% if object_list %}
+    <h3>Alle meine Listen</h3>
+    {% endif %}
+    <ul>
+        {% for todolist in object_list %}
+        <li>
+            <a href="{% url 'list' todolist.id %}">{{todolist.title}}</a>
+        </li>
+        {% empty %}
+        <h4>Keine Listen vorhanden!</h4>
+        {% endfor %}
+    </ul>
+{% endblock %}
