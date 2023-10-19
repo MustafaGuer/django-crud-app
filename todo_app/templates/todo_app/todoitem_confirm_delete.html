@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h3>Todo löschen</h3>
+    <p>Sicher dass du die Todo löschen willst {{object.title}}?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Ja" />
+        <a href="{% url 'index' %}">Abbrechen</a>
+    </form>
+{% endblock %}

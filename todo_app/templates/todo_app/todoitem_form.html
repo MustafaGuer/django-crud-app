@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h3>{{title}}</h3>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <input value="Speichern" type="submit" />
+            <a href="{% url 'list' todo_list.id %}">Abbrechen</a>
+            {% if object %}
+                <a href="{% url 'item-delete' todo_list.id object.id %}">Löschen</a>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}

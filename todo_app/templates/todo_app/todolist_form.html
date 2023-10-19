@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h3>{{title}}</h3>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input value="Speichern" type="submit" />
+            <a href="{% url 'index' %}">Abbrechen</a>
+            {% if object %}
+                <a href="{% url 'list-delete' todo_list.id %}">Löschen</a>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}

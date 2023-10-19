@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <div>
+            <h3>Liste:</h3>
+            <h5>{{todo_list.title | upper}}</h5>
+        </div>
+        <ul>
+            {% for todo in object_list %}
+                <li>
+                    <div>
+                        <a href="{% url 'item-update' todo_list.id todo.id %}">
+                            {{todo.title}}
+                            (Due {{todo.due_date | date:"l, F j"}})
+                        </a>
+                    </div>
+                </li>
+            {% empty %}
+            <p>Keine Todos enthalten</p>
+            {% endfor %}
+        </ul>
+        <p>
+            <a href="{% url 'item-add' todo_list.id %}">Neues Todo erstellen</a>
+            <a href="{% url 'list-delete' todo_list.id %}">Liste löschen</a>
+        </p>
+    </div>
+{% endblock %}
